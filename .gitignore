@@ -1,0 +1,17 @@
+# Ignore Elasticsearch binaries and data
+elasticsearch-9.0.3-windows-x86_64/
+*.log
+
+# Credentials and secrets
+credentials.json
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# System/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
