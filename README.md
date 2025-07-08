@@ -14,8 +14,7 @@ This application connects to Google Drive, fetches documents (.csv, .txt, .pdf, 
 
 1. **Clone the repository:**
    ```bash
-   git clone <repo-url>
-   cd cloud-doc-search
+   git clone https://github.com/TheAIExplorer/gbm-document-search.git
    ```
 2. **Install dependencies:**
    ```bash
@@ -40,9 +39,8 @@ This application connects to Google Drive, fetches documents (.csv, .txt, .pdf, 
 ## Elasticsearch Setup
 
 This project requires a running Elasticsearch instance.
-**Do not commit Elasticsearch binaries to the repository.**
 
-### Option 1: Download and Run Manually
+### Option 1: Download and place in root directory and Run Manually
 - Download Elasticsearch from [https://www.elastic.co/downloads/elasticsearch](https://www.elastic.co/downloads/elasticsearch)
 - Extract and run:
   - **Windows:**
