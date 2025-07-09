@@ -10,3 +10,9 @@ elasticsearch
 pdfminer.six
 python-dotenv
 tqdm
+chardet
+langdetect
+spacy
+nltk
+camelot-py[cv]
+tabula-py

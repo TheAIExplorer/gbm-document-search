@@ -3,6 +3,7 @@ from document_parser.parser_factory import ParserFactory
 from indexer.elastic_indexer import ElasticIndexer
 from models.document import Document
 
+
 def main():
     connector = GoogleDriveConnector()
     parser_factory = ParserFactory()
@@ -26,9 +27,12 @@ def main():
     # Index or update current files
     for meta in files:
         path = connector.download_file(meta)
-        parser = parser_factory.get_parser(path)
-        text = parser.extract_text(path)
-        doc = Document(meta['id'], meta['name'], text, meta['webViewLink'])
+        # Pass file_id, name, url as metadata for completeness
+        doc = parser_factory.parse(path)
+        doc.file_id = meta['id']
+        doc.filename = meta['name']
+        doc.url = meta['webViewLink']
+        doc.metadata.update({'file_id': meta['id'], 'filename': meta['name'], 'url': meta['webViewLink']})
         indexer.index_document(doc)
     
     print("Indexing and sync done.")

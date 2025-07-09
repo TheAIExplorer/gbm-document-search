@@ -67,11 +67,13 @@ docker run -p 9200:9200 -e "discovery.type=single-node" docker.elastic.co/elasti
 - Use the GoogleDriveConnector and document parsers to fetch and index documents. (See code in `main.py` or create a script to automate this.)
 
 ### Search API
-- Example search query:
+- You can use Postman or curl to access the `/search` endpoint.
+
+- Search query:
   ```bash
-  curl "http://127.0.0.1:8000/search?q=example"
+  curl "http://127.0.0.1:8000/search?q=searchterm"
   ```
-- **Response:**
+- Response:
   ```json
   [
     {"filename": "File1.pdf", "url": "https://drive.google.com/..."},
@@ -92,10 +94,8 @@ docker run -p 9200:9200 -e "discovery.type=single-node" docker.elastic.co/elasti
 
 ## Notes
 - Ensure Tesseract is installed and available in your PATH for OCR to work.
-- For demo, use Postman or curl to hit the `/search` endpoint.
-- For other cloud providers, implement a connector similar to `google_drive.py`.
 
-## API Demo: Postman Collection & CLI Example
+## API Usage: Postman Collection & CLI Command
 
 ### Postman Collection
 ```json
@@ -112,13 +112,13 @@ docker run -p 9200:9200 -e "discovery.type=single-node" docker.elastic.co/elasti
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8000/search?q=example",
+          "raw": "http://localhost:8000/search?q=searchterm",
           "protocol": "http",
           "host": ["localhost"],
           "port": "8000",
           "path": ["search"],
           "query": [
-            {"key": "q", "value": "example"}
+            {"key": "q", "value": "searchterm"}
           ]
         }
       },
@@ -128,7 +128,7 @@ docker run -p 9200:9200 -e "discovery.type=single-node" docker.elastic.co/elasti
 }
 ```
 
-### CLI Example
+### CLI Command
 ```bash
-curl "http://localhost:8000/search?q=example"
+curl "http://localhost:8000/search?q=searchterm"
 ```
