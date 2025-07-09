@@ -27,8 +27,10 @@ def main():
     # Index or update current files
     for meta in files:
         path = connector.download_file(meta)
-        # Pass file_id, name, url as metadata for completeness
         doc = parser_factory.parse(path)
+        if not isinstance(doc, Document):
+            print(f"Failed to parse {meta['name']}: {doc}")
+            continue
         doc.file_id = meta['id']
         doc.filename = meta['name']
         doc.url = meta['webViewLink']
